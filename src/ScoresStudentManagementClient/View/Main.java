@@ -543,6 +543,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane4.setViewportView(tbDiem);
 
         jButton10.setText("Thêm");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Môn:");
 
@@ -799,6 +804,19 @@ public class Main extends javax.swing.JFrame {
     private void pnLopHocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnLopHocFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_pnLopHocFocusGained
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        int row = jTable1.getSelectedRow();
+        int Accid = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
+        int monthiID = cbMonhoc.getSelectedIndex()+1;
+        int diem = Integer.parseInt(txtDiem.getText());
+        try {
+            new Xuly(socket, in, out).AddDiemThi(Accid, monthiID, diem);
+            loadDiem(Accid);
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     void loadDiem(int Accountid) {
         Vector data = new Vector();

@@ -106,5 +106,9 @@ public class Xuly {
         }
         return list;
     }
+    public void AddDiemThi(int accID, int MonthiID, int Diem) {
+        out.println("adddiemthi");
+        out.println(accID+";"+MonthiID+";"+Diem);
+    }
 
 }
