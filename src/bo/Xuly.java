@@ -97,6 +97,7 @@ public class Xuly {
         }
         return list;
     }
+
     public ArrayList GetAllMonhoc() throws SQLException, IOException {
         out.println("getallmonhoc");
         String[] ss = in.readLine().split("%%");
@@ -106,9 +107,15 @@ public class Xuly {
         }
         return list;
     }
+
     public void AddDiemThi(int accID, int MonthiID, int Diem) {
         out.println("adddiemthi");
-        out.println(accID+";"+MonthiID+";"+Diem);
+        out.println(accID + ";" + MonthiID + ";" + Diem);
+    }
+
+    public void DeleteDiemThi(int id) {
+        out.println("deletediemthi");
+        out.println(id);
     }
 
 }

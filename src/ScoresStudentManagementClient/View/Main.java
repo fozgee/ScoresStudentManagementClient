@@ -34,7 +34,7 @@ public class Main extends javax.swing.JFrame {
     protected Socket socket = new Socket("127.0.0.1", 9898);
     protected BufferedReader in;
     protected PrintWriter out;
-
+    int AccidTemp = 0;
     public Main() throws IOException, ClassNotFoundException, SQLException {
         initComponents();
 
@@ -140,7 +140,6 @@ public class Main extends javax.swing.JFrame {
         cbMonhoc = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         txtDiem = new javax.swing.JTextField();
-        jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -551,9 +550,12 @@ public class Main extends javax.swing.JFrame {
 
         jLabel2.setText("Môn:");
 
-        jButton11.setText("Sửa");
-
         jButton12.setText("Xóa");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Điểm");
 
@@ -571,11 +573,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
@@ -590,7 +590,6 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jButton10)
                     .addComponent(cbMonhoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jButton11)
                     .addComponent(jButton12)
                     .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -628,9 +627,7 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -639,14 +636,6 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtLophocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLophocActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLophocActionPerformed
-
-    private void txtMonhocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMonhocActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMonhocActionPerformed
 
     private void txtNgaySinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgaySinhActionPerformed
         // TODO add your handling code here:
@@ -709,7 +698,7 @@ public class Main extends javax.swing.JFrame {
         int gioitinh = cbGioiTinh.getSelectedIndex();
         int quyen = cbQuyen.getSelectedIndex() + 1;
         try {
-            new Xuly(socket, in, out).UpdateTaikhoan(id, txtTaiKhoan.getText(), txtHoVaTen.getText(), txtNgaySinh.getText(), gioitinh,cbLophoc.getSelectedIndex(), quyen);
+            new Xuly(socket, in, out).UpdateTaikhoan(id, txtTaiKhoan.getText(), txtHoVaTen.getText(), txtNgaySinh.getText(), gioitinh,cbLophoc.getSelectedIndex()+1, quyen);
             JOptionPane optionPane = new JOptionPane("Đã sửa tài khoản", 1);
             JDialog dialog = optionPane.createDialog(this, "Succes");
             dialog.setVisible(true);
@@ -771,6 +760,7 @@ public class Main extends javax.swing.JFrame {
 
             jTabbedPane1.setSelectedIndex(3);
             loadDiem(id);
+            AccidTemp = id;
             try {
                 setCbMonhoc();
             } catch (IOException ex) {
@@ -817,6 +807,39 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    //DELETE diem thi
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        int row = tbDiem.getSelectedRow();
+        int id = Integer.parseInt(tbDiem.getValueAt(row, 0).toString());
+            int rowtk = jTable1.getSelectedRow();
+        int idtk = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
+          JDialog.setDefaultLookAndFeelDecorated(true);
+        int response = JOptionPane.showConfirmDialog(null, "Xác nhận xóa?", "Confirm",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.NO_OPTION) {
+
+        } else if (response == JOptionPane.YES_OPTION) {            
+            try {
+                new Xuly(socket, in, out).DeleteDiemThi(id);
+              
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                JOptionPane optionPane = new JOptionPane("Đã xóa ", 1);
+                JDialog dialog = optionPane.createDialog(this, "Succes");
+                dialog.setVisible(true);
+        }
+          loadDiem(AccidTemp);
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void txtLophocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLophocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLophocActionPerformed
+
+    private void txtMonhocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMonhocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMonhocActionPerformed
 
     void loadDiem(int Accountid) {
         Vector data = new Vector();
@@ -974,7 +997,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox cbQuyen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
