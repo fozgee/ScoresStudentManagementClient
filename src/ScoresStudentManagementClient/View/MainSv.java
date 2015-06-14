@@ -5,17 +5,42 @@
  */
 package ScoresStudentManagementClient.View;
 
+import bo.Xuly;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+
+import java.net.Socket;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Quang
  */
 public class MainSv extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainSv
-     */
-    public MainSv() {
+      Socket socket = new Socket("127.0.0.1", 9898);
+     BufferedReader in;
+     PrintWriter out;
+    public MainSv(int AccId) throws IOException, ClassNotFoundException, SQLException {
+        
         initComponents();
+        in = new BufferedReader(
+                new InputStreamReader(socket.getInputStream()));
+        out = new PrintWriter(socket.getOutputStream(), true);
+
+        loadDiem(AccId);
+    }
+
+    private MainSv() throws IOException {
+    //    this.socket = new Socket("127.0.0.1", 9898);
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -31,7 +56,7 @@ public class MainSv extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbDiem = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình quản lý điểm sinh viên");
@@ -39,7 +64,7 @@ public class MainSv extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Thông tin điểm thi");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbDiem.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,7 +75,7 @@ public class MainSv extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbDiem);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -136,16 +161,42 @@ public class MainSv extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainSv().setVisible(true);
+                try {
+                    new MainSv().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MainSv.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
+     void loadDiem(int Accountid) {
+        Vector data = new Vector();
+        try {
+            ArrayList<String> a = new Xuly(socket, in, out).GetAllDiemthi(Accountid);
+            for (String s : a) {
+                Vector u = new Vector();
+                String[] ss = s.split(";");
+                u.addElement(ss[0]);
+                u.addElement(ss[1]);
+                u.addElement(ss[2]);
+                u.addElement(ss[3]);
+                data.add(u);
+            }
+        } catch (Exception ee) {
+        }
+        Vector cols = new Vector();
+        cols.addElement("ID");
+        cols.addElement("Tên đầy đủ");
+        cols.addElement("Môn học");
+        cols.addElement("Điểm");
+        tbDiem.setModel(new DefaultTableModel(data, cols));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tbDiem;
     // End of variables declaration//GEN-END:variables
 }
