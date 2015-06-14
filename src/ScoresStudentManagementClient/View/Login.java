@@ -149,7 +149,7 @@ public class Login extends javax.swing.JFrame {
             if (check != 0) {
                
             } else {
-                mess = "Sai tai khoan hoac mat khau";
+                mess = "Sai tài khoản hoặc mật khẩu.";
                  JOptionPane optionPane = new JOptionPane(mess,0);
                  JDialog dialog = optionPane.createDialog(this, "Login");
                   dialog.setVisible(true);
