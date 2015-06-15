@@ -44,11 +44,11 @@ public class Xuly {
 
     }
 
-    public int login(String user, String pass) throws IOException, Throwable {
+    public String login(String user, String pass) throws IOException, Throwable {
         out.println("login");
         out.println(user + ";" + pass);
 
-        return Integer.parseInt(in.readLine());
+        return (in.readLine());
     }
 
     public ArrayList GetAllTaikhoan() throws IOException {

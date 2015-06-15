@@ -144,7 +144,9 @@ public class Login extends javax.swing.JFrame {
 
         int check;
         try {
-            check = new Xuly(socket, in, out).login(user, password);
+            String ls = new Xuly(socket, in, out).login(user, password); //login status
+            check = Integer.parseInt(ls.split(";")[0]);
+            
             String mess = "";
             if (check != 0) {
                
@@ -156,8 +158,12 @@ public class Login extends javax.swing.JFrame {
             }
            
             if (check == 3) {
-                MainSv m = new MainSv();
+                int accID = Integer.parseInt(ls.split(";")[1]);
+                MainSv m = new MainSv(accID);
+               
                 m.setVisible(true);
+                
+                
                 this.setVisible(false);
             }
             if (check == 2) {
