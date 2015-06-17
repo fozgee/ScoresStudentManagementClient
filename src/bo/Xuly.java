@@ -90,7 +90,8 @@ public class Xuly {
 
     public ArrayList GetAllLophoc() throws SQLException, IOException {
         out.println("getalllophoc");
-        String[] ss = in.readLine().split("%%");
+        String st = in.readLine();
+        String[] ss = st.substring(0,st.length()-2).split("%%");
         ArrayList<String> list = new ArrayList<String>();
         for (String s : ss) {
             list.add(s);
@@ -100,7 +101,8 @@ public class Xuly {
 
     public ArrayList GetAllMonhoc() throws SQLException, IOException {
         out.println("getallmonhoc");
-        String[] ss = in.readLine().split("%%");
+         String st = in.readLine();
+        String[] ss = st.substring(0,st.length()-2).split("%%");
         ArrayList<String> list = new ArrayList<String>();
         for (String s : ss) {
             list.add(s);
@@ -116,6 +118,14 @@ public class Xuly {
     public void DeleteDiemThi(int id) {
         out.println("deletediemthi");
         out.println(id);
+    }
+    public void AddLophoc(String tenlop, String khoa, String nienkhoa) {
+        out.println("addlophoc");
+        out.println(tenlop+";"+khoa+";"+nienkhoa);
+    }
+      public void AddMonhoc(String tenmon, String khoa, String nienkhoa) {
+        out.println("addmonhoc");
+        out.println(tenmon+";"+khoa+";"+nienkhoa);
     }
 
 }
