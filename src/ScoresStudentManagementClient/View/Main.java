@@ -90,7 +90,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pnPhanquyen = new javax.swing.JTabbedPane();
         pnTaiKhoan = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lbTaiKhoan = new javax.swing.JLabel();
@@ -134,9 +134,9 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình quản lý điểm sinh viên");
 
-        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnPhanquyen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabbedPane1MouseClicked(evt);
+                pnPhanquyenMouseClicked(evt);
             }
         });
 
@@ -321,7 +321,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Tài khoản", pnTaiKhoan);
+        pnPhanquyen.addTab("Tài khoản", pnTaiKhoan);
 
         pnMonHoc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -359,7 +359,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(139, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Môn học", pnMonHoc);
+        pnPhanquyen.addTab("Môn học", pnMonHoc);
 
         pnLopHoc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -402,7 +402,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(229, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Lớp học", pnLopHoc);
+        pnPhanquyen.addTab("Lớp học", pnLopHoc);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Thông tin điểm thi");
@@ -505,17 +505,17 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Xem điểm", pnDiem);
+        pnPhanquyen.addTab("Quản lý điểm", pnDiem);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(pnPhanquyen)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(pnPhanquyen)
         );
 
         pack();
@@ -642,7 +642,7 @@ public class Main extends javax.swing.JFrame {
             dialog.setVisible(true);
         } else {
 
-            jTabbedPane1.setSelectedIndex(3);
+            pnPhanquyen.setSelectedIndex(3);
             loadDiem(id);
             AccidTemp = id;
             try {
@@ -662,9 +662,9 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tbDiemMouseClicked
 
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+    private void pnPhanquyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnPhanquyenMouseClicked
 
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
+    }//GEN-LAST:event_pnPhanquyenMouseClicked
 
     private void pnMonHocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnMonHocMouseClicked
         // TODO add your handling code here: 
@@ -885,7 +885,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbHoVaTen;
     private javax.swing.JLabel lbMatKhau;
@@ -897,6 +896,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel pnDiem;
     private javax.swing.JPanel pnLopHoc;
     private javax.swing.JPanel pnMonHoc;
+    private javax.swing.JTabbedPane pnPhanquyen;
     private javax.swing.JPanel pnTaiKhoan;
     private javax.swing.JTable tbDiem;
     private javax.swing.JTable tbLophoc;
