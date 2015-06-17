@@ -188,7 +188,12 @@ public class Login extends javax.swing.JFrame {
                 this.setVisible(false);
             }
             if (check == 2) {
-                Main m = new Main();
+                Main m = new Main(2);
+                m.setVisible(true);
+                this.setVisible(false);
+            }
+            if (check == 1) {
+                Main m = new Main(1);
                 m.setVisible(true);
                 this.setVisible(false);
             }

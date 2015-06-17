@@ -35,17 +35,27 @@ public class Main extends javax.swing.JFrame {
     protected BufferedReader in;
     protected PrintWriter out;
     int AccidTemp = 0;
-    public Main() throws IOException, ClassNotFoundException, SQLException {
+    public Main(int Quyen) throws IOException, ClassNotFoundException, SQLException {
         initComponents();
 
         in = new BufferedReader(
                 new InputStreamReader(socket.getInputStream()));
         out = new PrintWriter(socket.getOutputStream(), true);
 
+        if (Quyen == 2) {
+            btnSua.setVisible(false);
+            btnAddAccount.setVisible(false);
+            btnXoa.setVisible(false);
+        }
         loadAccount();
         loadMonhoc();
         loadlophoc();
         setCbLophoc() ;
+        
+    }
+
+    private Main() throws IOException{
+        //
     }
 
     void loadAccount() throws IOException {
@@ -102,9 +112,9 @@ public class Main extends javax.swing.JFrame {
         lbTaiKhoan1 = new javax.swing.JLabel();
         lbTaiKhoan2 = new javax.swing.JLabel();
         lbTaiKhoan3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAddAccount = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
         txtNgaySinh = new javax.swing.JTextField();
         cbGioiTinh = new javax.swing.JComboBox();
         lbTaiKhoan4 = new javax.swing.JLabel();
@@ -165,24 +175,24 @@ public class Main extends javax.swing.JFrame {
 
         lbTaiKhoan3.setText("Lớp học:");
 
-        jButton1.setText("Thêm mới");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddAccount.setText("Thêm mới");
+        btnAddAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddAccountActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sửa");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Xóa");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnXoaActionPerformed(evt);
             }
         });
 
@@ -247,11 +257,11 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnXemdiem)
                         .addGap(163, 163, 163)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -279,9 +289,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(lbTaiKhoan4))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
+                    .addComponent(btnAddAccount)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa)
                     .addComponent(btnXemdiem))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -551,7 +561,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTaiKhoanActionPerformed
 
     // add account   
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAccountActionPerformed
         int gioitinh = cbGioiTinh.getSelectedIndex();
         int quyen = cbQuyen.getSelectedIndex() + 1;
         try {
@@ -572,7 +582,7 @@ public class Main extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddAccountActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int row = jTable1.getSelectedRow();
@@ -597,7 +607,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     //update tai khoan
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         int row = jTable1.getSelectedRow();
         int id = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
         int gioitinh = cbGioiTinh.getSelectedIndex();
@@ -619,10 +629,10 @@ public class Main extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     //delete
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         int row = jTable1.getSelectedRow();
         int id = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
 
@@ -652,7 +662,7 @@ public class Main extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnXemdiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemdiemActionPerformed
         int row = jTable1.getSelectedRow();
@@ -877,26 +887,22 @@ public class Main extends javax.swing.JFrame {
                     new Main().setVisible(true);
                 } catch (IOException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddAccount;
+    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXemdiem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox cbGioiTinh;
     private javax.swing.JComboBox cbLophoc;
     private javax.swing.JComboBox cbMonhoc;
     private javax.swing.JComboBox cbQuyen;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
