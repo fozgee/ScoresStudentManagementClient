@@ -387,10 +387,10 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtMHTen" max="32767" attributes="0"/>
-                          <Component id="cbMHKhoa" max="32767" attributes="0"/>
-                          <Component id="cbMHNam" min="-2" pref="189" max="-2" attributes="0"/>
+                          <Component id="cbMHKhoa" alignment="0" pref="219" max="32767" attributes="0"/>
+                          <Component id="cbMHNam" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnAddMonhoc" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
