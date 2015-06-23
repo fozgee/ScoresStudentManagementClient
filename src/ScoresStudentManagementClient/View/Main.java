@@ -493,6 +493,12 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane3MouseClicked(evt);
+            }
+        });
+
         tbLophoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -504,6 +510,11 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbLophoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbLophocMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbLophoc);
 
         btnAddLophoc.setText("Thêm lớp");
@@ -1099,6 +1110,15 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jScrollPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane3MouseClicked
+
+    //tb Lớp học click
+    private void tbLophocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLophocMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbLophocMouseClicked
 
     void loadDiem(int Accountid) {
         Vector data = new Vector();
