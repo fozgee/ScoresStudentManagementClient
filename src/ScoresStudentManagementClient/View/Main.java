@@ -35,6 +35,7 @@ public class Main extends javax.swing.JFrame {
     protected BufferedReader in;
     protected PrintWriter out;
     int AccidTemp = 0;
+
     public Main(int Quyen) throws IOException, ClassNotFoundException, SQLException {
         initComponents();
 
@@ -54,11 +55,11 @@ public class Main extends javax.swing.JFrame {
         loadAccount();
         loadMonhoc();
         loadlophoc();
-        setCbLophoc() ;
-        
+        setCbLophoc();
+
     }
 
-    private Main() throws IOException{
+    private Main() throws IOException {
         //
     }
 
@@ -66,7 +67,7 @@ public class Main extends javax.swing.JFrame {
         ArrayList<String> a = new Xuly(socket, in, out).GetAllTaikhoan();
 
         Vector cols = new Vector();
-        cols.addElement("ID");
+        cols.addElement("MãTK");
         cols.addElement("Tên đăng nhập");
         cols.addElement("Tên đầy đủ");
         cols.addElement("Ngày sinh");
@@ -138,6 +139,9 @@ public class Main extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         cbMHNam = new javax.swing.JComboBox();
         btnXoaMon = new javax.swing.JToggleButton();
+        jLabel11 = new javax.swing.JLabel();
+        cbMH_hocki = new javax.swing.JComboBox();
+        btnUpdateMonhoc = new javax.swing.JButton();
         pnLopHoc = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbLophoc = new javax.swing.JTable();
@@ -149,6 +153,7 @@ public class Main extends javax.swing.JFrame {
         cbKhoa = new javax.swing.JComboBox();
         cbNienkhoa = new javax.swing.JComboBox();
         btnXoalop = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         pnDiem = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -356,7 +361,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
         );
 
         pnPhanquyen.addTab("Tài khoản", pnTaiKhoan);
@@ -409,6 +414,17 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setText("Học kì");
+
+        cbMH_hocki.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
+
+        btnUpdateMonhoc.setText("Sửa");
+        btnUpdateMonhoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateMonhocActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnMonHocLayout = new javax.swing.GroupLayout(pnMonHoc);
         pnMonHoc.setLayout(pnMonHocLayout);
         pnMonHocLayout.setHorizontalGroup(
@@ -422,14 +438,18 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnMonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnMonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtMHTen)
                     .addComponent(cbMHKhoa, 0, 219, Short.MAX_VALUE)
-                    .addComponent(cbMHNam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbMHNam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbMH_hocki, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddMonhoc)
+                .addGroup(pnMonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAddMonhoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUpdateMonhoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnXoaMon)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -446,13 +466,18 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnMonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(cbMHKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbMHKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateMonhoc))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnMonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbMHNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnMonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbMH_hocki, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnPhanquyen.addTab("Môn học", pnMonHoc);
@@ -505,6 +530,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Sửa");
+
         javax.swing.GroupLayout pnLopHocLayout = new javax.swing.GroupLayout(pnLopHoc);
         pnLopHoc.setLayout(pnLopHocLayout);
         pnLopHocLayout.setHorizontalGroup(
@@ -529,7 +556,9 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(cbNienkhoa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddLophoc, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnLopHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAddLophoc, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(btnXoalop)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -546,12 +575,13 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnLopHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnLopHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cbNienkhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -659,7 +689,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(btnSuadiemthi))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnDiemLayout = new javax.swing.GroupLayout(pnDiem);
@@ -732,25 +762,31 @@ public class Main extends javax.swing.JFrame {
 
     // add account   
     private void btnAddAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAccountActionPerformed
-        int gioitinh = cbGioiTinh.getSelectedIndex();
-        int quyen = cbQuyen.getSelectedIndex() + 1;
-        try {
-            new Xuly(socket, in, out).AddTaikhoan(txtTaiKhoan.getText(), txtHoVaTen.getText(), txtMatKhau.getText(), txtNgaySinh.getText(), gioitinh, cbLophoc.getSelectedIndex()+1, quyen);
-            JOptionPane optionPane = new JOptionPane("Đã thêm tài khoản", 1);
-            JDialog dialog = optionPane.createDialog(this, "Succes");
-            dialog.setVisible(true);
+        if (!txtHoVaTen.getText().trim().equals("")) {
+            int gioitinh = cbGioiTinh.getSelectedIndex();
+            int quyen = cbQuyen.getSelectedIndex() + 1;
+            try {
+                new Xuly(socket, in, out).AddTaikhoan(txtTaiKhoan.getText(), txtHoVaTen.getText(), txtMatKhau.getText(), txtNgaySinh.getText(), gioitinh, cbLophoc.getSelectedIndex() + 1, quyen);
+                JOptionPane optionPane = new JOptionPane("Đã thêm tài khoản", 1);
+                JDialog dialog = optionPane.createDialog(this, "Succes");
+                dialog.setVisible(true);
 
-        } catch (IOException ex) {
-            JOptionPane optionPane = new JOptionPane("Thêm tài khoản không thành công, thử i lại!", 0);
+            } catch (IOException ex) {
+                JOptionPane optionPane = new JOptionPane("Thêm tài khoản không thành công, thử i lại!", 0);
+                JDialog dialog = optionPane.createDialog(this, "Lỗi");
+                dialog.setVisible(true);
+                reconect();
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                loadAccount();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane optionPane = new JOptionPane("Tên tài khoản ko được để trống!", 0);
             JDialog dialog = optionPane.createDialog(this, "Lỗi");
             dialog.setVisible(true);
-            reconect();
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            loadAccount();
-        } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAddAccountActionPerformed
 
@@ -763,7 +799,7 @@ public class Main extends javax.swing.JFrame {
             txtNgaySinh.setText(jTable1.getValueAt(row, 3).toString());
             cbGioiTinh.setSelectedIndex(jTable1.getValueAt(row, 4).toString().equals("Nam") ? 1 : 0);
             //txtLopHoc.setText(jTable1.getValueAt(row, 5).toString());
-            cbLophoc.setSelectedIndex(Integer.parseInt(jTable1.getValueAt(row, 5).toString())-1);
+            cbLophoc.setSelectedIndex(Integer.parseInt(jTable1.getValueAt(row, 5).toString()) - 1);
             cbQuyen.setSelectedItem(jTable1.getValueAt(row, 6).toString());
             txtMatKhau.setText("");
         }
@@ -783,7 +819,7 @@ public class Main extends javax.swing.JFrame {
         int gioitinh = cbGioiTinh.getSelectedIndex();
         int quyen = cbQuyen.getSelectedIndex() + 1;
         try {
-            new Xuly(socket, in, out).UpdateTaikhoan(id, txtTaiKhoan.getText(), txtHoVaTen.getText(), txtNgaySinh.getText(), gioitinh,cbLophoc.getSelectedIndex()+1, quyen);
+            new Xuly(socket, in, out).UpdateTaikhoan(id, txtTaiKhoan.getText(), txtHoVaTen.getText(), txtNgaySinh.getText(), gioitinh, cbLophoc.getSelectedIndex() + 1, quyen);
             JOptionPane optionPane = new JOptionPane("Đã sửa tài khoản", 1);
             JDialog dialog = optionPane.createDialog(this, "Succes");
             dialog.setVisible(true);
@@ -883,11 +919,11 @@ public class Main extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         int row = jTable1.getSelectedRow();
         int Accid = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
-        int monthiID = cbMonhoc.getSelectedIndex()+1;
+        int monthiID = cbMonhoc.getSelectedIndex() + 1;
         int diem = Integer.parseInt(txtDiem.getText());
         int hocki = cbHocki.getSelectedIndex() + 1;
         try {
-            new Xuly(socket, in, out).AddDiemThi(Accid, monthiID, diem,hocki);
+            new Xuly(socket, in, out).AddDiemThi(Accid, monthiID, diem, hocki);
             loadDiem(Accid);
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -898,26 +934,26 @@ public class Main extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         int row = tbDiem.getSelectedRow();
         int id = Integer.parseInt(tbDiem.getValueAt(row, 0).toString());
-            int rowtk = jTable1.getSelectedRow();
+        int rowtk = jTable1.getSelectedRow();
         int idtk = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
-         
+
         JDialog.setDefaultLookAndFeelDecorated(true);
         int response = JOptionPane.showConfirmDialog(null, "Xác nhận xóa?", "Confirm",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
 
-        } else if (response == JOptionPane.YES_OPTION) {            
+        } else if (response == JOptionPane.YES_OPTION) {
             try {
                 new Xuly(socket, in, out).DeleteDiemThi(id);
-              
+
             } catch (IOException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
-                JOptionPane optionPane = new JOptionPane("Đã xóa ", 1);
-                JDialog dialog = optionPane.createDialog(this, "Succes");
-                dialog.setVisible(true);
+            JOptionPane optionPane = new JOptionPane("Đã xóa ", 1);
+            JDialog dialog = optionPane.createDialog(this, "Succes");
+            dialog.setVisible(true);
         }
-          loadDiem(AccidTemp);
+        loadDiem(AccidTemp);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void btnAddLophocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLophocActionPerformed
@@ -927,25 +963,25 @@ public class Main extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnAddLophocActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-         Login lg;
-         
+        Login lg;
+
         try {
             lg = new Login();
-              lg.setVisible(true);
-        this.setVisible(false);
+            lg.setVisible(true);
+            this.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnAddMonhocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMonhocActionPerformed
         try {
-            new Xuly(socket, in, out).AddMonhoc(txtMHTen.getText(), cbMHKhoa.getSelectedItem().toString(), cbMHNam.getSelectedItem().toString());
+            new Xuly(socket, in, out).AddMonhoc(txtMHTen.getText(), cbMHKhoa.getSelectedItem().toString(), cbMHNam.getSelectedItem().toString(), cbMH_hocki.getSelectedItem().toString());
             loadMonhoc();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -954,48 +990,50 @@ public class Main extends javax.swing.JFrame {
 
     //delete lop hoc
     private void btnXoalopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoalopActionPerformed
-            int row = tbLophoc.getSelectedRow();
+        int row = tbLophoc.getSelectedRow();
         int id = Integer.parseInt(tbLophoc.getValueAt(row, 0).toString());
         JDialog.setDefaultLookAndFeelDecorated(true);
         int response = JOptionPane.showConfirmDialog(null, "Xác nhận xóa?", "Confirm",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
 
-        } else if (response == JOptionPane.YES_OPTION) {         
-                try {
-                    new Xuly(socket, in, out).Deletelophoc(id);
-                    loadlophoc();
-                } catch (IOException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        } else if (response == JOptionPane.YES_OPTION) {
+            try {
+                new Xuly(socket, in, out).Deletelophoc(id);
+                loadlophoc();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnXoalopActionPerformed
 
     // delete mon hoc
     private void btnXoaMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaMonActionPerformed
-         int row = tbMonhoc.getSelectedRow();
+        int row = tbMonhoc.getSelectedRow();
         int id = Integer.parseInt(tbMonhoc.getValueAt(row, 0).toString());
         JDialog.setDefaultLookAndFeelDecorated(true);
         int response = JOptionPane.showConfirmDialog(null, "Xác nhận xóa?", "Confirm",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
 
-        } else if (response == JOptionPane.YES_OPTION) {         
-                try {
-                    new Xuly(socket, in, out).DeleteMonhoc(id);
-                    loadMonhoc();
-                } catch (IOException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        } else if (response == JOptionPane.YES_OPTION) {
+            try {
+                new Xuly(socket, in, out).DeleteMonhoc(id);
+                loadMonhoc();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnXoaMonActionPerformed
 
     // mouse click mon hoc
     private void tbMonhocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMonhocMouseClicked
-         int row = tbMonhoc.getSelectedRow();
+        int row = tbMonhoc.getSelectedRow();
         txtMHTen.setText(tbMonhoc.getValueAt(row, 1).toString());
         cbMHKhoa.setSelectedItem(tbMonhoc.getValueAt(row, 2).toString());
         cbMHNam.setSelectedItem(tbMonhoc.getValueAt(row, 3).toString());
+        cbMHNam.setSelectedItem(tbMonhoc.getValueAt(row, 3).toString());
+        cbMH_hocki.setSelectedItem(tbMonhoc.getValueAt(row, 4).toString());
     }//GEN-LAST:event_tbMonhocMouseClicked
 
     //update diem thi
@@ -1003,8 +1041,8 @@ public class Main extends javax.swing.JFrame {
         int row = tbDiem.getSelectedRow();
         int id = Integer.parseInt(tbDiem.getValueAt(row, 0).toString());
         try {
-            new Xuly(socket, in, out).UpdateDiemthi(id, cbMonhoc.getSelectedIndex()+1, Integer.parseInt(txtDiem.getText()),  cbHocki.getSelectedIndex()+1);
-          JOptionPane optionPane = new JOptionPane("Đã sửa điểm", 1);
+            new Xuly(socket, in, out).UpdateDiemthi(id, cbMonhoc.getSelectedIndex() + 1, Integer.parseInt(txtDiem.getText()), cbHocki.getSelectedIndex() + 1);
+            JOptionPane optionPane = new JOptionPane("Đã sửa điểm", 1);
             JDialog dialog = optionPane.createDialog(this, "Succes");
             dialog.setVisible(true);
             loadDiem(AccidTemp);
@@ -1015,11 +1053,28 @@ public class Main extends javax.swing.JFrame {
             dialog.setVisible(true);
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnSuadiemthiActionPerformed
 
-    
-    
+    //update mon hoc
+    private void btnUpdateMonhocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateMonhocActionPerformed
+        int row = tbMonhoc.getSelectedRow();
+        int id = Integer.parseInt(tbMonhoc.getValueAt(row, 0).toString());
+        try {
+            new Xuly(socket, in, out).UpdateMonhoc(id, txtMHTen.getText(), cbMHKhoa.getSelectedItem().toString(), cbMHNam.getSelectedItem().toString(), Integer.parseInt((String) cbMH_hocki.getSelectedItem()));
+            JOptionPane optionPane = new JOptionPane("Đã update môn học", 1);
+            JDialog dialog = optionPane.createDialog(this, "Succes");
+            dialog.setVisible(true);
+            loadMonhoc();
+        } catch (IOException ex) {
+            JOptionPane optionPane = new JOptionPane("Sửa điểm thi không thành công, thử lại!", 0);
+            reconect();
+            JDialog dialog = optionPane.createDialog(this, "Lỗi");
+            dialog.setVisible(true);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnUpdateMonhocActionPerformed
+
     void loadDiem(int Accountid) {
         Vector data = new Vector();
         try {
@@ -1100,15 +1155,17 @@ public class Main extends javax.swing.JFrame {
                 u.addElement(ss[1]);
                 u.addElement(ss[2]);
                 u.addElement(ss[3]);
+                u.addElement(ss[4]);
                 data.add(u);
             }
         } catch (Exception ee) {
         }
         Vector cols = new Vector();
-        cols.addElement("ID");
+        cols.addElement("Mã môn");
         cols.addElement("Môn học");
         cols.addElement("Khoa");
         cols.addElement("Nam hoc");
+        cols.addElement("Hoc ki");
         tbMonhoc.setModel(new DefaultTableModel(data, cols));
     }
 
@@ -1128,7 +1185,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception ee) {
         }
         Vector cols = new Vector();
-        cols.addElement("ID");
+        cols.addElement("Mã lớp");
         cols.addElement("Lớp học");
         cols.addElement("Khoa");
         cols.addElement("Niên khóa");
@@ -1180,6 +1237,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnAddMonhoc;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnSuadiemthi;
+    private javax.swing.JButton btnUpdateMonhoc;
     private javax.swing.JButton btnXemdiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JToggleButton btnXoaMon;
@@ -1190,13 +1248,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox cbLophoc;
     private javax.swing.JComboBox cbMHKhoa;
     private javax.swing.JComboBox cbMHNam;
+    private javax.swing.JComboBox cbMH_hocki;
     private javax.swing.JComboBox cbMonhoc;
     private javax.swing.JComboBox cbNienkhoa;
     private javax.swing.JComboBox cbQuyen;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

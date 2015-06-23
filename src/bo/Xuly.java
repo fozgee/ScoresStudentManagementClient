@@ -76,6 +76,14 @@ public class Xuly {
         out.println(id+";"+monhoc+";"+diem+";"+hocki);
     }
     
+    public void UpdateMonhoc(int id, String tenmon, String khoa, String nienkhoa, int hocki ) {
+        out.println("updatemonhoc");
+        out.println(id+";"+tenmon+";"+khoa+";"+nienkhoa+";"+hocki);
+    }
+    public void UpdateLophoc(int id, String tenlop , String khoa, String nienkhoa) {
+        out.println("updatemonhoc");
+        out.println(id+";"+tenlop+";"+khoa+";"+nienkhoa);
+    }
     public void DeleteTaiKhoan(int id) {
         out.println("deleteaccount");
         out.println(id);
@@ -130,9 +138,9 @@ public class Xuly {
         out.println(tenlop + ";" + khoa + ";" + nienkhoa);
     }
 
-    public void AddMonhoc(String tenmon, String khoa, String nienkhoa) {
+    public void AddMonhoc(String tenmon, String khoa, String nienkhoa,String hocki) {
         out.println("addmonhoc");
-        out.println(tenmon + ";" + khoa + ";" + nienkhoa);
+        out.println(tenmon + ";" + khoa + ";" + nienkhoa + ";" +hocki);
     }
 
     public void Deletelophoc(int id) {
