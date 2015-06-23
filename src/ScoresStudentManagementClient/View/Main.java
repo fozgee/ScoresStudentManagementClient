@@ -519,7 +519,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel6.setText("Khoa:");
 
-        cbKhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Luat", "Quan ly", "Quan tri kinh doanh", "Khoa hoc may tinh", "Kien truc", "Giao duc dao tao" }));
+        cbKhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Môi trường", "Khí tượng, thủy văn", "Quản lý đất đai", "Công nghệ thông tin", "Kinh tế tài nguyên và môi trường", "Địa chất", "Tài nguyên nước", "Lý luận chính trị", "Khoa học đại cương", "Khoa học biển và hải đảo", "Giáo dục thường xuyên" }));
 
         cbNienkhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2008 - 2012", "2009 - 2013", "2010 - 2014", "2011 - 2015", "2012 - 2016", "2013 - 2017", "2014 - 2018", "2015 - 2019", "2016 - 2020", "2017 - 2021", "2018 - 2022", "2019 - 2023", "2020 - 2024" }));
 
@@ -531,6 +531,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         jButton1.setText("Sửa");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnLopHocLayout = new javax.swing.GroupLayout(pnLopHoc);
         pnLopHoc.setLayout(pnLopHocLayout);
@@ -1074,6 +1079,26 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnUpdateMonhocActionPerformed
+
+    //btn Update lop hoc
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         int row = tbLophoc.getSelectedRow();
+        int id = Integer.parseInt(tbLophoc.getValueAt(row, 0).toString());
+        
+        try {
+            new Xuly(socket, in, out).UpdateLophoc(id, cbLophoc.getSelectedItem().toString(), cbKhoa.getSelectedItem().toString(), cbNienkhoa.getSelectedItem().toString());
+            JOptionPane optionPane = new JOptionPane("Đã update lớp học", 1);
+            JDialog dialog = optionPane.createDialog(this, "Succes");
+            dialog.setVisible(true);
+            loadlophoc();
+        } catch (IOException ex) {
+            JOptionPane optionPane = new JOptionPane("Sửa lớp học không thành công, thử lại!", 0);
+            reconect();
+            JDialog dialog = optionPane.createDialog(this, "Lỗi");
+            dialog.setVisible(true);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     void loadDiem(int Accountid) {
         Vector data = new Vector();
