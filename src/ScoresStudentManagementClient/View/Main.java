@@ -396,7 +396,7 @@ public class Main extends javax.swing.JFrame {
 
         jLabel8.setText("Khoa");
 
-        cbMHKhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Luat", "Quan ly", "Quan tri kinh doanh", "Khoa hoc may tinh", "Kien truc", "Giao duc dao tao" }));
+        cbMHKhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Môi trường", "Khí tượng, thủy văn", "Quản lý đất đai", "Công nghệ thông tin", "Kinh tế tài nguyên và môi trường", "Địa chất", "Tài nguyên nước", "Lý luận chính trị", "Khoa học đại cương", "Khoa học biển và hải đảo", "Giáo dục thường xuyên" }));
 
         jLabel9.setText("Năm học");
 
@@ -496,7 +496,7 @@ public class Main extends javax.swing.JFrame {
 
         cbKhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Luat", "Quan ly", "Quan tri kinh doanh", "Khoa hoc may tinh", "Kien truc", "Giao duc dao tao" }));
 
-        cbNienkhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025" }));
+        cbNienkhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2008 - 2012", "2009 - 2013", "2010 - 2014", "2011 - 2015", "2012 - 2016", "2013 - 2017", "2014 - 2018", "2015 - 2019", "2016 - 2020", "2017 - 2021", "2018 - 2022", "2019 - 2023", "2020 - 2024" }));
 
         btnXoalop.setText("Xóa lớp");
         btnXoalop.addActionListener(new java.awt.event.ActionListener() {

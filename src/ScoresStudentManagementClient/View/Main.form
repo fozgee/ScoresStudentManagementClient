@@ -472,13 +472,18 @@
             <Component class="javax.swing.JComboBox" name="cbMHKhoa">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
-                    <StringItem index="0" value="Luat"/>
-                    <StringItem index="1" value="Quan ly"/>
-                    <StringItem index="2" value="Quan tri kinh doanh"/>
-                    <StringItem index="3" value="Khoa hoc may tinh"/>
-                    <StringItem index="4" value="Kien truc"/>
-                    <StringItem index="5" value="Giao duc dao tao"/>
+                  <StringArray count="11">
+                    <StringItem index="0" value="M&#xf4;i tr&#x1b0;&#x1edd;ng"/>
+                    <StringItem index="1" value="Kh&#xed; t&#x1b0;&#x1ee3;ng, th&#x1ee7;y v&#x103;n"/>
+                    <StringItem index="2" value="Qu&#x1ea3;n l&#xfd; &#x111;&#x1ea5;t &#x111;ai"/>
+                    <StringItem index="3" value="C&#xf4;ng ngh&#x1ec7; th&#xf4;ng tin"/>
+                    <StringItem index="4" value="Kinh t&#x1ebf; t&#xe0;i nguy&#xea;n v&#xe0; m&#xf4;i tr&#x1b0;&#x1edd;ng"/>
+                    <StringItem index="5" value="&#x110;&#x1ecb;a ch&#x1ea5;t"/>
+                    <StringItem index="6" value="T&#xe0;i nguy&#xea;n n&#x1b0;&#x1edb;c"/>
+                    <StringItem index="7" value="L&#xfd; lu&#x1ead;n ch&#xed;nh tr&#x1ecb;"/>
+                    <StringItem index="8" value="Khoa h&#x1ecd;c &#x111;&#x1ea1;i c&#x1b0;&#x1a1;ng"/>
+                    <StringItem index="9" value="Khoa h&#x1ecd;c bi&#x1ec3;n v&#xe0; h&#x1ea3;i &#x111;&#x1ea3;o"/>
+                    <StringItem index="10" value="Gi&#xe1;o d&#x1ee5;c th&#x1b0;&#x1edd;ng xuy&#xea;n"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -658,19 +663,19 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="13">
-                    <StringItem index="0" value="2013"/>
-                    <StringItem index="1" value="2014"/>
-                    <StringItem index="2" value="2015"/>
-                    <StringItem index="3" value="2016"/>
-                    <StringItem index="4" value="2017"/>
-                    <StringItem index="5" value="2018"/>
-                    <StringItem index="6" value="2019"/>
-                    <StringItem index="7" value="2020"/>
-                    <StringItem index="8" value="2021"/>
-                    <StringItem index="9" value="2022"/>
-                    <StringItem index="10" value="2023"/>
-                    <StringItem index="11" value="2024"/>
-                    <StringItem index="12" value="2025"/>
+                    <StringItem index="0" value="2008 - 2012"/>
+                    <StringItem index="1" value="2009 - 2013"/>
+                    <StringItem index="2" value="2010 - 2014"/>
+                    <StringItem index="3" value="2011 - 2015"/>
+                    <StringItem index="4" value="2012 - 2016"/>
+                    <StringItem index="5" value="2013 - 2017"/>
+                    <StringItem index="6" value="2014 - 2018"/>
+                    <StringItem index="7" value="2015 - 2019"/>
+                    <StringItem index="8" value="2016 - 2020"/>
+                    <StringItem index="9" value="2017 - 2021"/>
+                    <StringItem index="10" value="2018 - 2022"/>
+                    <StringItem index="11" value="2019 - 2023"/>
+                    <StringItem index="12" value="2020 - 2024"/>
                   </StringArray>
                 </Property>
               </Properties>
