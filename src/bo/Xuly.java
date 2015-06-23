@@ -70,7 +70,12 @@ public class Xuly {
         out.println("updateaccount");
         out.println(id + ";" + tendangnhap + ";" + tendaydu + ";" + ngaysinh + ";" + gioitinh + ";" + lophoc + ";" + quyen);
     }
-
+    
+    public void UpdateDiemthi (int id, int monhoc, int diem, int hocki) {
+        out.println("updatediemthi");
+        out.println(id+";"+monhoc+";"+diem+";"+hocki);
+    }
+    
     public void DeleteTaiKhoan(int id) {
         out.println("deleteaccount");
         out.println(id);
@@ -91,7 +96,7 @@ public class Xuly {
     public ArrayList GetAllLophoc() throws SQLException, IOException {
         out.println("getalllophoc");
         String st = in.readLine();
-        String[] ss = st.substring(0,st.length()-2).split("%%");
+        String[] ss = st.substring(0, st.length() - 2).split("%%");
         ArrayList<String> list = new ArrayList<String>();
         for (String s : ss) {
             list.add(s);
@@ -101,8 +106,8 @@ public class Xuly {
 
     public ArrayList GetAllMonhoc() throws SQLException, IOException {
         out.println("getallmonhoc");
-         String st = in.readLine();
-        String[] ss = st.substring(0,st.length()-2).split("%%");
+        String st = in.readLine();
+        String[] ss = st.substring(0, st.length() - 2).split("%%");
         ArrayList<String> list = new ArrayList<String>();
         for (String s : ss) {
             list.add(s);
@@ -110,22 +115,34 @@ public class Xuly {
         return list;
     }
 
-    public void AddDiemThi(int accID, int MonthiID, int Diem) {
+    public void AddDiemThi(int accID, int MonthiID, int Diem, int Hocki) {
         out.println("adddiemthi");
-        out.println(accID + ";" + MonthiID + ";" + Diem);
+        out.println(accID + ";" + MonthiID + ";" + Diem + ";" + Hocki);
     }
 
     public void DeleteDiemThi(int id) {
         out.println("deletediemthi");
         out.println(id);
     }
+
     public void AddLophoc(String tenlop, String khoa, String nienkhoa) {
         out.println("addlophoc");
-        out.println(tenlop+";"+khoa+";"+nienkhoa);
+        out.println(tenlop + ";" + khoa + ";" + nienkhoa);
     }
-      public void AddMonhoc(String tenmon, String khoa, String nienkhoa) {
+
+    public void AddMonhoc(String tenmon, String khoa, String nienkhoa) {
         out.println("addmonhoc");
-        out.println(tenmon+";"+khoa+";"+nienkhoa);
+        out.println(tenmon + ";" + khoa + ";" + nienkhoa);
+    }
+
+    public void Deletelophoc(int id) {
+        out.println("deletelophoc");
+        out.println(id);
+    }
+
+    public void DeleteMonhoc(int id) {
+        out.println("deletemonhoc");
+        out.println(id);
     }
 
 }

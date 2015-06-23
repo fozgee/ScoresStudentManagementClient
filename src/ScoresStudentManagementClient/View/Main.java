@@ -137,6 +137,7 @@ public class Main extends javax.swing.JFrame {
         cbMHKhoa = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         cbMHNam = new javax.swing.JComboBox();
+        btnXoaMon = new javax.swing.JToggleButton();
         pnLopHoc = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbLophoc = new javax.swing.JTable();
@@ -147,6 +148,7 @@ public class Main extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cbKhoa = new javax.swing.JComboBox();
         cbNienkhoa = new javax.swing.JComboBox();
+        btnXoalop = new javax.swing.JButton();
         pnDiem = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -158,6 +160,9 @@ public class Main extends javax.swing.JFrame {
         txtDiem = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        cbHocki = new javax.swing.JComboBox();
+        jLabel10 = new javax.swing.JLabel();
+        btnSuadiemthi = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -373,6 +378,11 @@ public class Main extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbMonhoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbMonhocMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbMonhoc);
 
         btnAddMonhoc.setText("Thêm môn học");
@@ -391,6 +401,13 @@ public class Main extends javax.swing.JFrame {
         jLabel9.setText("Năm học");
 
         cbMHNam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025" }));
+
+        btnXoaMon.setText("Xóa môn");
+        btnXoaMon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaMonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnMonHocLayout = new javax.swing.GroupLayout(pnMonHoc);
         pnMonHoc.setLayout(pnMonHocLayout);
@@ -413,6 +430,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(cbMHNam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAddMonhoc)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnXoaMon)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnMonHocLayout.setVerticalGroup(
@@ -422,7 +441,8 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnMonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddMonhoc)
                     .addComponent(jLabel7)
-                    .addComponent(txtMHTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMHTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXoaMon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnMonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -478,6 +498,13 @@ public class Main extends javax.swing.JFrame {
 
         cbNienkhoa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025" }));
 
+        btnXoalop.setText("Xóa lớp");
+        btnXoalop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoalopActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnLopHocLayout = new javax.swing.GroupLayout(pnLopHoc);
         pnLopHoc.setLayout(pnLopHocLayout);
         pnLopHocLayout.setHorizontalGroup(
@@ -502,7 +529,9 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(cbNienkhoa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddLophoc)
+                .addComponent(btnAddLophoc, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnXoalop)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnLopHocLayout.setVerticalGroup(
@@ -512,7 +541,8 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(pnLopHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTenlop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(btnAddLophoc))
+                    .addComponent(btnAddLophoc)
+                    .addComponent(btnXoalop))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnLopHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -566,28 +596,51 @@ public class Main extends javax.swing.JFrame {
 
         jLabel3.setText("Điểm");
 
+        cbHocki.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3" }));
+
+        jLabel10.setText("Học kì");
+
+        btnSuadiemthi.setText("Sửa");
+        btnSuadiemthi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuadiemthiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(cbMonhoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(cbMonhoc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(cbHocki, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(btnSuadiemthi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,8 +654,12 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbHocki, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(btnSuadiemthi))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnDiemLayout = new javax.swing.GroupLayout(pnDiem);
@@ -803,7 +860,7 @@ public class Main extends javax.swing.JFrame {
         int row = tbDiem.getSelectedRow();
         txtDiem.setText(tbDiem.getValueAt(row, 3).toString());
         cbMonhoc.setSelectedItem(tbDiem.getValueAt(row, 2).toString());
-
+        cbHocki.setSelectedItem(tbDiem.getValueAt(row, 4).toString());
     }//GEN-LAST:event_tbDiemMouseClicked
 
     private void pnPhanquyenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnPhanquyenMouseClicked
@@ -828,8 +885,9 @@ public class Main extends javax.swing.JFrame {
         int Accid = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
         int monthiID = cbMonhoc.getSelectedIndex()+1;
         int diem = Integer.parseInt(txtDiem.getText());
+        int hocki = cbHocki.getSelectedIndex() + 1;
         try {
-            new Xuly(socket, in, out).AddDiemThi(Accid, monthiID, diem);
+            new Xuly(socket, in, out).AddDiemThi(Accid, monthiID, diem,hocki);
             loadDiem(Accid);
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -842,7 +900,8 @@ public class Main extends javax.swing.JFrame {
         int id = Integer.parseInt(tbDiem.getValueAt(row, 0).toString());
             int rowtk = jTable1.getSelectedRow();
         int idtk = Integer.parseInt(jTable1.getValueAt(row, 0).toString());
-          JDialog.setDefaultLookAndFeelDecorated(true);
+         
+        JDialog.setDefaultLookAndFeelDecorated(true);
         int response = JOptionPane.showConfirmDialog(null, "Xác nhận xóa?", "Confirm",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.NO_OPTION) {
@@ -893,6 +952,74 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddMonhocActionPerformed
 
+    //delete lop hoc
+    private void btnXoalopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoalopActionPerformed
+            int row = tbLophoc.getSelectedRow();
+        int id = Integer.parseInt(tbLophoc.getValueAt(row, 0).toString());
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        int response = JOptionPane.showConfirmDialog(null, "Xác nhận xóa?", "Confirm",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.NO_OPTION) {
+
+        } else if (response == JOptionPane.YES_OPTION) {         
+                try {
+                    new Xuly(socket, in, out).Deletelophoc(id);
+                    loadlophoc();
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+    }//GEN-LAST:event_btnXoalopActionPerformed
+
+    // delete mon hoc
+    private void btnXoaMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaMonActionPerformed
+         int row = tbMonhoc.getSelectedRow();
+        int id = Integer.parseInt(tbMonhoc.getValueAt(row, 0).toString());
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        int response = JOptionPane.showConfirmDialog(null, "Xác nhận xóa?", "Confirm",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.NO_OPTION) {
+
+        } else if (response == JOptionPane.YES_OPTION) {         
+                try {
+                    new Xuly(socket, in, out).DeleteMonhoc(id);
+                    loadMonhoc();
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+    }//GEN-LAST:event_btnXoaMonActionPerformed
+
+    // mouse click mon hoc
+    private void tbMonhocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMonhocMouseClicked
+         int row = tbMonhoc.getSelectedRow();
+        txtMHTen.setText(tbMonhoc.getValueAt(row, 1).toString());
+        cbMHKhoa.setSelectedItem(tbMonhoc.getValueAt(row, 2).toString());
+        cbMHNam.setSelectedItem(tbMonhoc.getValueAt(row, 3).toString());
+    }//GEN-LAST:event_tbMonhocMouseClicked
+
+    //update diem thi
+    private void btnSuadiemthiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuadiemthiActionPerformed
+        int row = tbDiem.getSelectedRow();
+        int id = Integer.parseInt(tbDiem.getValueAt(row, 0).toString());
+        try {
+            new Xuly(socket, in, out).UpdateDiemthi(id, cbMonhoc.getSelectedIndex()+1, Integer.parseInt(txtDiem.getText()),  cbHocki.getSelectedIndex()+1);
+          JOptionPane optionPane = new JOptionPane("Đã sửa điểm", 1);
+            JDialog dialog = optionPane.createDialog(this, "Succes");
+            dialog.setVisible(true);
+            loadDiem(AccidTemp);
+        } catch (IOException ex) {
+            JOptionPane optionPane = new JOptionPane("Sửa điểm thi không thành công, thử lại!", 0);
+            reconect();
+            JDialog dialog = optionPane.createDialog(this, "Lỗi");
+            dialog.setVisible(true);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnSuadiemthiActionPerformed
+
+    
+    
     void loadDiem(int Accountid) {
         Vector data = new Vector();
         try {
@@ -904,6 +1031,7 @@ public class Main extends javax.swing.JFrame {
                 u.addElement(ss[1]);
                 u.addElement(ss[2]);
                 u.addElement(ss[3]);
+                u.addElement(ss[4]);
                 data.add(u);
             }
         } catch (Exception ee) {
@@ -913,6 +1041,7 @@ public class Main extends javax.swing.JFrame {
         cols.addElement("Tên đầy đủ");
         cols.addElement("Môn học");
         cols.addElement("Điểm");
+        cols.addElement("Học kì");
         tbDiem.setModel(new DefaultTableModel(data, cols));
     }
 
@@ -1050,9 +1179,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnAddLophoc;
     private javax.swing.JButton btnAddMonhoc;
     private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnSuadiemthi;
     private javax.swing.JButton btnXemdiem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JToggleButton btnXoaMon;
+    private javax.swing.JButton btnXoalop;
     private javax.swing.JComboBox cbGioiTinh;
+    private javax.swing.JComboBox cbHocki;
     private javax.swing.JComboBox cbKhoa;
     private javax.swing.JComboBox cbLophoc;
     private javax.swing.JComboBox cbMHKhoa;
@@ -1063,6 +1196,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
